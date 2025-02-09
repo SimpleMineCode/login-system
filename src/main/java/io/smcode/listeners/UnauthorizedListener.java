@@ -1,6 +1,8 @@
 package io.smcode.listeners;
 
 import io.smcode.LoginManager;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -25,7 +27,7 @@ public class UnauthorizedListener implements Listener {
         if (!this.loginManager.isLoggedIn(player)) {
             player.getAttribute(Attribute.JUMP_STRENGTH).setBaseValue(0);
             player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, -1, false, false, false));
-            player.sendRichMessage("<red>Please login");
+            player.sendRichMessage("<red>Please login with <yellow>/login</yellow> or register with <yellow>/register");
         }
     }
 

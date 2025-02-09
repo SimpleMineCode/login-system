@@ -4,3 +4,7 @@ website: https://smcode.io
 version: 1.0
 api-version: 1.13
 main: io.smcode.LoginPlugin
+
+commands:
+  login:
+  register:

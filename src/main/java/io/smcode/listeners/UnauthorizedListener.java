@@ -1,5 +1,6 @@
 package io.smcode.listeners;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
 import io.smcode.LoginManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -25,10 +26,14 @@ public class UnauthorizedListener implements Listener {
         final Player player = event.getPlayer();
 
         if (!this.loginManager.isLoggedIn(player)) {
-            player.getAttribute(Attribute.JUMP_STRENGTH).setBaseValue(0);
             player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, PotionEffect.INFINITE_DURATION, -1, false, false, false));
             player.sendRichMessage("<red>Please login with <yellow>/login</yellow> or register with <yellow>/register");
         }
+    }
+
+    @EventHandler
+    public void onChat(AsyncChatEvent event) {
+        event.setCancelled(!this.loginManager.isLoggedIn(event.getPlayer()));
     }
 
     @EventHandler

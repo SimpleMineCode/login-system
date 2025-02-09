@@ -71,6 +71,8 @@ public class LoginManager {
         }
 
         this.loggedIn.put(player.getUniqueId(), hostName);
+
+        player.clearActivePotionEffects();
         player.sendMessage("§aYou are logged in.");
     }
 
